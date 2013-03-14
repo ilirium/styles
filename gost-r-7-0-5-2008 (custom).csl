@@ -1,0 +1,205 @@
+<!-- Отредактировано Илья Калимулин -->
+<!-- Добавлено: 1) неразрывный пробел между некоторыми элементами текста, чтобы в Word не выполнялось плохих переносов -->
+<!-- TODO: 1) для англоязычных текстов обозначение страницы в ссылке на английском  -->
+<!-- TODO: 1) для англоязычных текстов обозначение "и др." в цитате на английском -->
+<!-- В CSL есть поддержка локализации, но она не реализована в Mendeley, хотя и отмечена, что планируется -->
+
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" default-locale="ru" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+   <info>
+      <title>Russian GOST R 7.0.5-2008 edit by IRM</title>
+      <id>http://www.zotero.org/styles/gost-r-7-0-5-2008</id>
+      <link href="http://www.zotero.org/styles/gost-r-7-0-5-2008" rel="self"/>
+      <author>
+         <name>Ilya Kalimulin</name>
+         <email>ilirium115@gmail.com</email>
+         <uri>http://ilirium.name</uri>
+      </author>
+      <category citation-format="author-date"/>
+      <category field="generic-base"/>
+      <updated>2010-03-07T16:09:00+03:00</updated>
+      <summary>&gt;Russian GOST-2008 style.</summary>
+      <link href="http://protect.gost.ru/document.aspx?control=7&amp;id=173511" rel="documentation"/>
+      <link href="http://chetvericov.ru/stil-oformleniya-dlya-mendeley-i-zotero-csl-po-gost-r-705-2008/" rel="documentation"/>
+      <rights>This work is licensed under a Creative Commons Attribution-Share Alike 3.0 Unported License  http://creativecommons.org/licenses/by-sa/3.0/</rights>
+   </info>
+   <macro name="editor">
+      <names variable="editor" prefix="/ под ред. " delimiter=", " suffix=".">
+         <name initialize-with="." sort-separator=", " delimiter=", " delimiter-precedes-last="always"/>
+      </names>
+   </macro>
+   <macro name="author">
+      <names variable="author">
+         <!-- -->
+	 <!-- неразрывный пробел вместо sort-separator -->
+	 <!-- delimiter это разделитеь между авторами -->
+	 <!-- sort-separator это пробел между Ф и ИО -->
+	 <!-- остальные не ясно -->
+	 <name name-as-sort-order="all" sort-separator="aaa&#160;&#160;&#160;&#160; " initialize-with="." delimiter=", " delimiter-precedes-last="always"/>
+         <label form="short" prefix=" " suffix="." text-case="lowercase" strip-periods="true"/>
+      </names>
+   </macro>
+   <macro name="author-cite">
+      <names variable="author">
+         <!-- -->
+	 <!-- неразрывный пробел вместо prefix -->
+	 <name name-as-sort-order="all" sort-separator="aaa " initialize-with="." delimiter=",bbb " delimiter-precedes-last="always"/>
+         <label form="short" prefix="eee " suffix="." text-case="lowercase" strip-periods="true"/>
+         <substitute>
+            <text macro="title"/>
+         </substitute>
+      </names>
+   </macro>
+   <macro name="author_short">
+      <names variable="author">
+         <!-- -->
+	 <!-- неразрывный пробел вместо sort-separator -->
+	 <name form="short" name-as-sort-order="all" sort-separator="www " delimiter=",rrr " delimiter-precedes-last="always"/>
+         <substitute>
+            <text variable="title"/>
+         </substitute>
+      </names>
+   </macro>
+   <macro name="access">
+      <choose>
+         <if variable="URL">
+            <text value="[Электронный ресурс]. "/>
+            <text variable="URL" prefix="URL: "/>
+            <group prefix=" (" suffix=")">
+               <text term="accessed" suffix=": "/>
+               <date variable="accessed">
+                  <date-part name="day" suffix="." form="numeric-leading-zeros"/>
+                  <date-part name="month" suffix="." form="numeric-leading-zeros"/>
+                  <date-part name="year"/>
+               </date>
+            </group>
+         </if>
+      </choose>
+   </macro>
+   <macro name="title">
+      <text variable="title"/>
+   </macro>
+   <macro name="publisher">
+      <group prefix="" delimiter=": " suffix="">
+         <text variable="publisher-place"/>
+         <text variable="publisher"/>
+      </group>
+      <text macro="year-date" suffix="." prefix=", "/>
+      <text variable="edition" prefix=" Вып. "/>
+   </macro>
+   <macro name="year-date">
+      <date variable="issued">
+         <date-part name="year"/>
+      </date>
+   </macro>
+   <macro name="edition">
+      <choose>
+         <if is-numeric="edition">
+            <group delimiter=" ">
+               <number variable="edition" form="ordinal"/>
+               <text term="edition" form="short" suffix="." strip-periods="true"/>
+            </group>
+         </if>
+         <else>
+            <text variable="edition"/>
+         </else>
+      </choose>
+   </macro>
+   <macro name="language-sort">
+      <text variable="note"/>
+      <text value="Z999"/>
+   </macro>
+   
+   <!-- Наверное, формат цитаты в тексте -->
+   <citation collapse="year" et-al-use-first="1" et-al-min="4" disambiguate-add-year-suffix="true">
+      <layout prefix="[" suffix="]" delimiter="; ">
+         <text macro="author_short" suffix=", "/>
+         <text macro="year-date"/>
+	 <!-- -->
+	 <!-- неразрывный пробел -->
+         <text variable="locator" prefix=", с. "/>
+      </layout>
+   </citation>
+   <locale xml:lang="en">
+      <terms>
+         <term name="et-al">и др.</term>
+         <term name="editor" form="verb">под ред.</term>
+         <term name="accessed">дата обращения</term>
+      </terms>
+   </locale>
+   <bibliography et-al-min="4" et-al-use-first="1">
+      <sort>
+         <key macro="language-sort"/>
+         <key macro="author"/>
+         <key variable="issued"/>
+      </sort>
+      <layout suffix=".">
+         <!-- delimiter это разделитель групп автора, название, журнал -->
+	 <group delimiter="">
+            <!-- нумерация, отключена -->
+	    <!-- <text variable="citation-number" suffix=""/> -->
+	    <!-- suffix разделяет блок с авторами от названия -->
+            <text macro="author" suffix=" "/>
+            <choose>
+               <if type="bill book graphic legal_case motion_picture report song" match="any">
+                  <group delimiter=". " prefix="">
+                     <group delimiter=" ">
+                        <text macro="title"/>
+                        <text macro="editor"/>
+                     </group>
+                     <text macro="publisher"/>
+                     <!-- -->
+		     <text variable="number-of-pages" prefix="" suffix=" с."/>
+                  </group>
+               </if>
+               <else-if type="chapter paper-conference" match="any">
+                  <group prefix="" delimiter=". "> <!-- Разделитель между авторами и названием конференции -->
+                     <group delimiter=" "> <!-- Разделитель после названия конференции -->
+                        <text macro="title"/>
+                        <text variable="container-title" prefix="// "/> <!-- Знак-разделитель после названия конференции и остальными данными-->
+                        <text variable="collection-title" prefix=" " suffix="."/>
+                        <text macro="editor"/>
+                     </group>
+                     <text macro="publisher"/>
+                     <!-- -->
+		     <text prefix="С. " variable="page"/>
+                  </group>
+               </else-if>
+               <else-if type="webpage">
+                  <text macro="title" prefix=" " suffix=""/>
+                  <text prefix=" " macro="access"/>
+               </else-if>
+               <else-if type="article-journal article-magazine article-newspaper broadcast interview manuscript map patent personal_communication song speech thesis webpage" match="any">
+                  <!-- prefix разделяет блок с авторами от названия (со стороны названия) -->
+		  <!-- suffix разделяет блок с названием от нурнала (со стороны названия) -->
+		  <text macro="title" prefix="" suffix=""/>
+		  <!-- prefix разлеляет название от символа обозначения журнала -->
+		  <group delimiter=". " prefix=" " suffix=".">
+                     <!-- group prefix в следующей строке значит: (название статьи) (неразрывный пробел) () (group prefix) -->
+		     <group prefix="// " delimiter=". ">
+                        <text variable="container-title" form="short"/>
+                        <text macro="year-date"/>
+                        <text variable="volume" prefix="№ "/>
+                     </group>
+		     <!-- -->
+                     <text variable="page" prefix="С. "/>
+                  </group>
+               </else-if>
+               <else>
+                  <!-- -->
+		  <text macro="title" prefix="" suffix=""/>
+                  <group delimiter=". " prefix=" " suffix=".">
+                     <group prefix="// " delimiter=". ">
+                        <text variable="container-title" form="short"/>
+                        <text macro="year-date"/>
+                        <text variable="volume" prefix="№ "/>
+                     </group>
+		     <!-- -->
+                     <text variable="page" prefix="С. "/>
+                  </group>
+               </else>
+            </choose>
+         </group>
+      </layout>
+   </bibliography>
+</style>
