@@ -2,12 +2,12 @@
 <style xmlns="http://purl.org/net/xbiblio/csl" default-locale="ru" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
    <info>
       <title>Russian GOST R 7.0.5-2008 (custom)</title>
-      <id>http://www.zotero.org/styles/gost-r-7-0-5-2008_custom</id>
+      <id>http://www.zotero.org/styles/gost-r-7-0-5-2008-custom</id>
       <link href="http://www.zotero.org/styles/gost-r-7-0-5-2008" rel="self"/>
       <author>
-         <name>Ilya Kalimulin</name>
-         <email>ilirium115@gmail.com</email>
-         <uri>http://ilirium.name</uri>
+         <name>Andrey Chetverikov</name>
+         <email>andrey@chetvericov.ru</email>
+         <uri>http://chetvericov.ru</uri>
       </author>
       <category citation-format="author-date"/>
       <category field="generic-base"/>
@@ -30,20 +30,20 @@
    <macro name="author">
       <names variable="author">
          <!-- -->
-	 <!-- неразрывный пробел вместо sort-separator -->
-	 <!-- delimiter это разделитеь между авторами -->
-	 <!-- sort-separator это пробел между Ф и ИО -->
-	 <!-- остальные не ясно -->
-	 <name name-as-sort-order="all" sort-separator="aaa&#160;&#160;&#160;&#160; " initialize-with="." delimiter=", " delimiter-precedes-last="always"/>
+     <!-- неразрывный пробел вместо sort-separator -->
+     <!-- delimiter это разделитеь между авторами -->
+     <!-- sort-separator это пробел между Ф и ИО -->
+     <!-- остальные не ясно -->
+     <name name-as-sort-order="all" sort-separator="&#160;" initialize-with="." delimiter=", " delimiter-precedes-last="always"/>
          <label form="short" prefix=" " suffix="." text-case="lowercase" strip-periods="true"/>
       </names>
    </macro>
    <macro name="author-cite">
       <names variable="author">
          <!-- -->
-	 <!-- неразрывный пробел вместо prefix -->
-	 <name name-as-sort-order="all" sort-separator="aaa " initialize-with="." delimiter=",bbb " delimiter-precedes-last="always"/>
-         <label form="short" prefix="eee " suffix="." text-case="lowercase" strip-periods="true"/>
+     <!-- неразрывный пробел вместо prefix -->
+     <name name-as-sort-order="all" sort-separator="aaa " initialize-with="." delimiter=",bbb " delimiter-precedes-last="always"/>
+         <label form="short" prefix="eee&#160;" suffix="." text-case="lowercase" strip-periods="true"/>
          <substitute>
             <text macro="title"/>
          </substitute>
@@ -52,8 +52,8 @@
    <macro name="author_short">
       <names variable="author">
          <!-- -->
-	 <!-- неразрывный пробел вместо sort-separator -->
-	 <name form="short" name-as-sort-order="all" sort-separator="www " delimiter=",rrr " delimiter-precedes-last="always"/>
+     <!-- неразрывный пробел вместо sort-separator -->
+     <name form="short" name-as-sort-order="all" sort-separator="www&#160;" delimiter=",rrr " delimiter-precedes-last="always"/>
          <substitute>
             <text variable="title"/>
          </substitute>
@@ -84,7 +84,7 @@
          <text variable="publisher"/>
       </group>
       <text macro="year-date" suffix="." prefix=", "/>
-      <text variable="edition" prefix=" Вып. "/>
+      <text variable="edition" prefix=" Вып.&#160;"/>
    </macro>
    <macro name="year-date">
       <date variable="issued">
@@ -114,9 +114,9 @@
       <layout prefix="[" suffix="]" delimiter="; ">
          <text macro="author_short" suffix=", "/>
          <text macro="year-date"/>
-	 <!-- -->
-	 <!-- неразрывный пробел -->
-         <text variable="locator" prefix=", с. "/>
+     <!-- -->
+     <!-- неразрывный пробел -->
+         <text variable="locator" prefix=", с.&#160;"/>
       </layout>
    </citation>
    <locale xml:lang="en">
@@ -134,10 +134,10 @@
       </sort>
       <layout suffix=".">
          <!-- delimiter это разделитель групп автора, название, журнал -->
-	 <group delimiter="">
+     <group delimiter="">
             <!-- нумерация, отключена -->
-	    <!-- <text variable="citation-number" suffix=""/> -->
-	    <!-- suffix разделяет блок с авторами от названия -->
+        <!-- <text variable="citation-number" suffix=""/> -->
+        <!-- suffix разделяет блок с авторами от названия -->
             <text macro="author" suffix=" "/>
             <choose>
                <if type="bill book graphic legal_case motion_picture report song" match="any">
@@ -148,20 +148,20 @@
                      </group>
                      <text macro="publisher"/>
                      <!-- -->
-		     <text variable="number-of-pages" prefix="" suffix=" с."/>
+            <text variable="number-of-pages" prefix="" suffix=" с."/>
                   </group>
                </if>
                <else-if type="chapter paper-conference" match="any">
                   <group prefix="" delimiter=". "> <!-- Разделитель между авторами и названием конференции -->
-                     <group delimiter=" "> <!-- Разделитель после названия конференции -->
+                     <group delimiter="&#160;"> <!-- Разделитель после названия конференции -->
                         <text macro="title"/>
                         <text variable="container-title" prefix="// "/> <!-- Знак-разделитель после названия конференции и остальными данными-->
-                        <text variable="collection-title" prefix=" " suffix="."/>
+                        <text variable="collection-title" prefix="&#160;" suffix="."/>
                         <text macro="editor"/>
                      </group>
                      <text macro="publisher"/>
                      <!-- -->
-		     <text prefix="С. " variable="page"/>
+            <text prefix="С.&#160;" variable="page"/>
                   </group>
                </else-if>
                <else-if type="webpage">
@@ -170,30 +170,30 @@
                </else-if>
                <else-if type="article-journal article-magazine article-newspaper broadcast interview manuscript map patent personal_communication song speech thesis webpage" match="any">
                   <!-- prefix разделяет блок с авторами от названия (со стороны названия) -->
-		  <!-- suffix разделяет блок с названием от нурнала (со стороны названия) -->
-		  <text macro="title" prefix="" suffix=""/>
-		  <!-- prefix разлеляет название от символа обозначения журнала -->
-		  <group delimiter=". " prefix=" " suffix=".">
+          <!-- suffix разделяет блок с названием от нурнала (со стороны названия) -->
+          <text macro="title" prefix="" suffix=""/>
+          <!-- prefix разлеляет название от символа обозначения журнала -->
+          <group delimiter=". " prefix="&#160;" suffix=".">
                      <!-- group prefix в следующей строке значит: (название статьи) (неразрывный пробел) () (group prefix) -->
-		     <group prefix="// " delimiter=". ">
+          <group prefix="// " delimiter=". ">
                         <text variable="container-title" form="short"/>
                         <text macro="year-date"/>
-                        <text variable="volume" prefix="№ "/>
+                        <text variable="volume" prefix="№&#160;"/>
                      </group>
-		     <!-- -->
-                     <text variable="page" prefix="С. "/>
+          <!-- -->
+                     <text variable="page" prefix="С.&#160;"/>
                   </group>
                </else-if>
                <else>
                   <!-- -->
-		  <text macro="title" prefix="" suffix=""/>
-                  <group delimiter=". " prefix=" " suffix=".">
-                     <group prefix="// " delimiter=". ">
+          <text macro="title" prefix="" suffix=""/>
+                  <group delimiter=". " prefix="&#160;" suffix=".">
+                     <group prefix="// " delimiter=".&#160;">
                         <text variable="container-title" form="short"/>
                         <text macro="year-date"/>
                         <text variable="volume" prefix="№ "/>
                      </group>
-		     <!-- -->
+             <!-- -->
                      <text variable="page" prefix="С. "/>
                   </group>
                </else>
