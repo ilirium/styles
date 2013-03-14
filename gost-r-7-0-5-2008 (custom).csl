@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" default-locale="ru" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
    <info>
-      <title>Russian GOST R 7.0.5-2008 edit by IRM</title>
-      <id>http://www.zotero.org/styles/gost-r-7-0-5-2008</id>
+      <title>Russian GOST R 7.0.5-2008 (custom)</title>
+      <id>http://www.zotero.org/styles/gost-r-7-0-5-2008_custom</id>
       <link href="http://www.zotero.org/styles/gost-r-7-0-5-2008" rel="self"/>
       <author>
          <name>Ilya Kalimulin</name>
